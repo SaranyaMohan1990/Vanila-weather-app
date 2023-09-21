@@ -20,11 +20,11 @@ h1 {
   width: 300px;
   float: left;
 }
-.current-weather {
-  text-align: right;
-  font-weight: normal;
-  font-size: 18px;
-}
+/* .current-weather { */
+/* text-align: right; */
+/* font-weight: normal; */
+/* font-size: 18px; */
+/* } */
 .wrapper {
   width: 500px;
   overflow: hidden;
