@@ -24,22 +24,23 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="search search-icon">
-        <form action="#" id="locationForm" onsubmit="return false">
-          <input type="text" placeholder="search locations" name="search" />
-          <button type="submit" class="btn btn-primary">search</button>
-          <button id="currentButton" type="button" class="btn btn-success">
-            Current
-          </button>
-        </form>
-      </div>
+    <div class="wcontainer">
+      <div class="wwrapper">
+        <div class="search search-icon">
+          <form action="#" id="locationForm" onsubmit="return false">
+            <input type="text" placeholder="search locations" name="search" />
+            <button type="submit" class="btn btn-primary">search</button>
+            <button id="currentButton" type="button" class="btn btn-success">
+              Current
+            </button>
+          </form>
+        </div>
 
-      <h1 id="loca">Vancouver<br /></h1>
-      <a class="day" href="">Today</a>
-      <a class="day" href="">Tomorrow</a>
-      <a class="day" href="">5 days</a>
-      <div class="wrapper">
+        <h1 id="loca">Vancouver<br /></h1>
+        <a class="day" href="">Today</a>
+        <a class="day" href="">Tomorrow</a>
+        <a class="day" href="">5 days</a>
+
         <div class="today">
           <h2 id="date">Sat,August 19 <br />11.16am <br /></h2>
           <h2>
@@ -47,47 +48,52 @@
             <span id="temp"> 19</span>°
           </h2>
         </div>
-        <ul>
-          <li>Mostly sunny</li>
-          <li>Feels like 18°</li>
-        </ul>
-      </div>
-      <div class="col-6">
-        <ul>
-          <li>Precipitation: 70%</li>
-          <li>Humidity: 83%</li>
-          <li>Wind: 0 km/h</li>
-        </ul>
-      </div>
-      <div class="row">
-        <div class="col-2">
-          12 pm
-          <i class="fa-solid fa-cloud-sun cloudysun"></i> <br />20°
-        </div>
+        <div class="row">
+          <div class="col-6">
+            <ul class="theList">
+              <li>Mostly sunny</li>
+              <li>Feels like 18°</li>
+            </ul>
+          </div>
 
-        <div class="col-2">
-          1 pm
-          <i class="fa-solid fa-sun sunny-icon"></i><br />21°
+          <div class="col-6">
+            <ul class="weather-attributes">
+              <li>Precipitation: 70%</li>
+              <li>Humidity: 83%</li>
+              <li>Wind: 0 km/h</li>
+            </ul>
+          </div>
         </div>
-        <div class="col-2">
-          2 pm
+        <div class="row forecast">
+          <div class="col-2">
+            12 pm
+            <i class="fa-solid fa-cloud-sun cloudysun"></i> <br />20°
+          </div>
 
-          <i class="fa-solid fa-sun sunny-icon"></i><br />23°
+          <div class="col-2">
+            1 pm
+            <i class="fa-solid fa-sun sunny-icon"></i><br />21°
+          </div>
+          <div class="col-2">
+            2 pm
+
+            <i class="fa-solid fa-sun sunny-icon"></i><br />23°
+          </div>
+          <div class="col-2">
+            3 pm <i class="fa-solid fa-sun sunny-icon"></i><br />24°
+          </div>
+          <div class="col-2">
+            4 pm <i class="fa-solid fa-sun sunny-icon"></i><br />24°
+          </div>
         </div>
-        <div class="col-2">
-          3 pm <i class="fa-solid fa-sun sunny-icon"></i><br />24°
-        </div>
-        <div class="col-2">
-          4 pm <i class="fa-solid fa-sun sunny-icon"></i><br />24°
-        </div>
+        <button class="more">More info</button>
       </div>
-      <button class="more">More info</button>
+      <a
+        class="github"
+        target="_blank"
+        href="https://github.com/SaranyaMohan1990/my-first-weather-app/tree/main"
+        >Open source code </a
+      >by Saranya Mohan
     </div>
-    <a
-      class="github"
-      target="_blank"
-      href="https://github.com/SaranyaMohan1990/my-first-weather-app/tree/main"
-      >Open source code </a
-    >by Saranya Mohan
   </body>
 </html>
