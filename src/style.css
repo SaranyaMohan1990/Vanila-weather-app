@@ -10,8 +10,12 @@
 }
 .location {
   font-weight: normal;
-
   padding: 20px;
+}
+#conversion {
+  font-size: 20px;
+  font-weight: normal;
+  text-decoration: none;
 }
 
 .today {
