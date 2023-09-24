@@ -1,8 +1,7 @@
-currentTime();
 setTimeout(function () {
   currentPosition();
 }, 1000);
-function currentTime() {
+function currentTime(timestamp) {
   var options = {
     weekday: "short",
     month: "short",
@@ -10,7 +9,9 @@ function currentTime() {
     hour: "numeric",
     minute: "numeric",
   };
-  let now = new Date();
+  let now = new Date(timestamp);
+  console.log(timestamp);
+  console.log(now);
   let current = now.toLocaleString("en-US", options);
   document.querySelector("#date").textContent = current;
 }
@@ -47,7 +48,7 @@ function currentPosition() {
 }
 
 function showTemp(response) {
-  let temperature = Math.round(response.data.main.temp);
+  temperature = Math.round(response.data.main.temp);
   let temp = document.getElementById("temp");
   temp.innerHTML = temperature;
 
@@ -69,7 +70,22 @@ function showTemp(response) {
       response.data.weather[0].icon +
       "@2x.png"
   );
+  currentTime(response.data.dt * 1000);
 }
-
+let temperature = null;
 let currentbutton = document.getElementById("currentButton");
 currentbutton.addEventListener("click", currentPosition);
+function changeTempC() {
+  let tempholder = document.getElementById("temp");
+  tempholder.innerHTML = temperature;
+}
+function changeTempF() {
+  let tempholder = document.getElementById("temp");
+  let f = (temperature * 9) / 5 + 32;
+  tempholder.innerHTML = f;
+}
+
+let cels = document.getElementById("celsius");
+cels.addEventListener("click", changeTempC);
+let farenH = document.getElementById("faren");
+farenH.addEventListener("click", changeTempF);
