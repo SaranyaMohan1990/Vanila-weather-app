@@ -50,9 +50,19 @@ function showTemp(response) {
   let temperature = Math.round(response.data.main.temp);
   let temp = document.getElementById("temp");
   temp.innerHTML = temperature;
-  console.log(response.data.main.temp);
+
   let location = document.getElementById("loca");
   location.innerHTML = response.data.name;
+  console.log(response.data);
+  let description = document.getElementById("description");
+  description.innerHTML = response.data.weather[0].description;
+  let feelslike = document.getElementById("feelslike");
+  feelslike.innerHTML = Math.round(response.data.main.feels_like);
+  let humidityElement = document.getElementById("humidity");
+  humidityElement.innerHTML = response.data.main.humidity;
+  let windElement = document.getElementById("windy");
+  windElement.innerHTML = response.data.wind.speed;
 }
+
 let currentbutton = document.getElementById("currentButton");
 currentbutton.addEventListener("click", currentPosition);
