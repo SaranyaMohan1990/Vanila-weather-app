@@ -62,6 +62,13 @@ function showTemp(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.getElementById("windy");
   windElement.innerHTML = response.data.wind.speed;
+  let iconElement = document.getElementById("icon");
+  iconElement.setAttribute(
+    "src",
+    "http://openweathermap.org/img/wn/" +
+      response.data.weather[0].icon +
+      "@2x.png"
+  );
 }
 
 let currentbutton = document.getElementById("currentButton");
