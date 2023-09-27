@@ -1,9 +1,5 @@
 .wcontainer {
-  border: 1px black;
-
   padding: 25px;
-
-  border-radius: 8px;
 }
 .search-icon {
   text-align: center;
@@ -20,6 +16,7 @@
 
 .today {
   margin-left: 15px;
+
   font-size: 16px;
   font-weight: normal;
 }
@@ -42,41 +39,22 @@
   border: 1px black;
   padding: 30px;
   border-radius: 8px;
-}
-/* .sunny-icon {
-  color: #fbbc04;
-  font-size: 35px;
-}
-.cloudysun {
-  color: #fbbc04;
-  font-size: 35px;
-}
-.more {
-  display: block;
-  margin: 20px auto;
-  background-color: rgb(174, 174, 236);
-  border-radius: 10px;
-  border: none;
-/* } */
-.day {
-  color: black;
-  padding: 30px;
-  text-decoration: none;
-  margin-left: 60px;
-}
-.day:hover {
-  text-decoration: underline;
-  font-weight: bold;
-}
-/* .weather-icon {
-  padding: 40px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.forecast {
-  margin-top: 30px;
-  padding-left: 80px;
-}  */
 .github {
   text-align: center;
   font-size: 18px;
+}
+.weather-forcast {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 20px;
+  color: rgb(53, 52, 52);
+}
+.forcast-icon {
+  font-size: 20px;
+}
+.forcast-min-temp {
+  opacity: 0.6%;
 }
