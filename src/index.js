@@ -84,8 +84,33 @@ function changeTempF() {
   let f = (temperature * 9) / 5 + 32;
   tempholder.innerHTML = f;
 }
-
+function forecastDetails() {
+  let forcastElement = document.querySelector("#wforcast");
+  let forcastHtml = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri"];
+  days.forEach(function (days) {
+    forcastHtml =
+      forcastHtml +
+      `
+          
+            <div class="col-2">
+              <div class="forcast-date">${days}</div>
+              <div class="forcast-icon">
+                <i class="fa-solid fa-cloud-sun cloudysun"></i>
+              </div>
+              <div class="forecat--temp">
+                <span class="forecast-max-temp"> <strong>20°</strong></span>
+                <span class="forecast-min-temp">12°</span>
+              </div>
+            </div>
+          
+        `;
+  });
+  forcastHtml = forcastHtml + `</div>`;
+  forcastElement.innerHTML = forcastHtml;
+}
 let cels = document.getElementById("celsius");
 cels.addEventListener("click", changeTempC);
 let farenH = document.getElementById("faren");
 farenH.addEventListener("click", changeTempF);
+forecastDetails();
