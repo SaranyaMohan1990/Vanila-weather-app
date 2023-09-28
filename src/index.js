@@ -46,7 +46,12 @@ function showPosition(position) {
 function currentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
+function getForcast(coordinates) {
+  console.log(coordinates);
+  apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
+  apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+}
 function showTemp(response) {
   temperature = Math.round(response.data.main.temp);
   let temp = document.getElementById("temp");
@@ -71,6 +76,7 @@ function showTemp(response) {
       "@2x.png"
   );
   currentTime(response.data.dt * 1000);
+  getForcast(response.data.coord);
 }
 let temperature = null;
 let currentbutton = document.getElementById("currentButton");
