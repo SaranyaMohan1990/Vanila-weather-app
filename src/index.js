@@ -90,7 +90,8 @@ function changeTempF() {
   let f = (temperature * 9) / 5 + 32;
   tempholder.innerHTML = f;
 }
-function forecastDetails() {
+function forecastDetails(response) {
+  console.log(response.data.daily);
   let forcastElement = document.querySelector("#wforcast");
   let forcastHtml = `<div class="row">`;
   let days = ["Wed", "Thu", "Fri"];
