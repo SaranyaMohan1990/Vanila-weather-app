@@ -1,5 +1,5 @@
 setTimeout(function () {
-  currentPosition();
+  search();
 }, 1000);
 function currentTime(timestamp) {
   var options = {
@@ -9,14 +9,25 @@ function currentTime(timestamp) {
     hour: "numeric",
     minute: "numeric",
   };
-  let now = new Date(timestamp);
-  console.log(timestamp);
-  console.log(now);
+  let now = new Date(timestamp * 1000);
+
   let current = now.toLocaleString("en-US", options);
   document.querySelector("#date").textContent = current;
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 function search() {
   let location = document.getElementsByName("search")[0].value;
+  console.log("Location" + location);
+  if (location === "") {
+    console.log("Location" + location);
+    location = "vancouver";
+  }
+  console.log("Location" + location);
   document.getElementById("loca").innerHTML = location;
   let apiKey = "85aeae13423cb3b91b9b5468d6b9af73";
   let apiUrl =
@@ -51,6 +62,7 @@ function getForcast(coordinates) {
   apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
   apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
+  axios.get(apiUrl).then(forecastDetails);
 }
 function showTemp(response) {
   temperature = Math.round(response.data.main.temp);
@@ -90,31 +102,39 @@ function changeTempF() {
   let f = (temperature * 9) / 5 + 32;
   tempholder.innerHTML = f;
 }
+
 function forecastDetails(response) {
-  console.log(response.data.daily);
-  let forcastElement = document.querySelector("#wforcast");
-  let forcastHtml = `<div class="row">`;
+  let forecastElement = document.querySelector("#wforecast");
+  let forecastHtml = `<div class="row">`;
   let days = ["Wed", "Thu", "Fri"];
-  days.forEach(function (days) {
-    forcastHtml =
-      forcastHtml +
-      `
-          
+  let forcast = response.data.daily;
+
+  forcast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `
             <div class="col-2">
-              <div class="forcast-date">${days}</div>
-              <div class="forcast-icon">
-                <i class="fa-solid fa-cloud-sun cloudysun"></i>
-              </div>
-              <div class="forecat--temp">
-                <span class="forecast-max-temp"> <strong>20°</strong></span>
-                <span class="forecast-min-temp">12°</span>
+              <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
+              
+                <img src=
+    "http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"/>
+            
+              <div class="forecast-temp">
+                <span class="forecast-max-temp"> <strong>${Math.round(
+                  forecastDay.temp.max
+                )}°</strong></span>
+                <span class="forecast-min-temp">${Math.round(
+                  forecastDay.temp.min
+                )}°</span>
               </div>
             </div>
           
         `;
+    }
   });
-  forcastHtml = forcastHtml + `</div>`;
-  forcastElement.innerHTML = forcastHtml;
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
 }
 let cels = document.getElementById("celsius");
 cels.addEventListener("click", changeTempC);
