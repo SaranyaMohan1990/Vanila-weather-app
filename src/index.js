@@ -97,11 +97,6 @@ function changeTempC() {
   let tempholder = document.getElementById("temp");
   tempholder.innerHTML = temperature;
 }
-function changeTempF() {
-  let tempholder = document.getElementById("temp");
-  let f = (temperature * 9) / 5 + 32;
-  tempholder.innerHTML = f;
-}
 
 function forecastDetails(response) {
   let forecastElement = document.querySelector("#wforecast");
