@@ -4,7 +4,10 @@ body {
 .wcontainer {
   padding: 25px;
 }
-
+.search-icon {
+  text-align: center;
+  color: black;
+}
 .location {
   font-size: 38px;
   font-weight: 700;
