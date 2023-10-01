@@ -1,6 +1,5 @@
-setTimeout(function () {
-  search();
-}, 1000);
+search();
+
 function currentTime(timestamp) {
   var options = {
     weekday: "short",
@@ -22,12 +21,11 @@ function formatDay(timestamp) {
 }
 function search() {
   let location = document.getElementsByName("search")[0].value;
-  console.log("Location" + location);
+
   if (location === "") {
-    console.log("Location" + location);
     location = "vancouver";
   }
-  console.log("Location" + location);
+
   document.getElementById("loca").innerHTML = location;
   let apiKey = "85aeae13423cb3b91b9b5468d6b9af73";
   let apiUrl =
@@ -58,10 +56,9 @@ function currentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 function getForcast(coordinates) {
-  console.log(coordinates);
   apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
   apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(forecastDetails);
 }
 function showTemp(response) {
@@ -71,7 +68,7 @@ function showTemp(response) {
 
   let location = document.getElementById("loca");
   location.innerHTML = response.data.name;
-  console.log(response.data);
+
   let description = document.getElementById("description");
   description.innerHTML = response.data.weather[0].description;
   let feelslike = document.getElementById("feelslike");
@@ -87,7 +84,7 @@ function showTemp(response) {
       response.data.weather[0].icon +
       "@2x.png"
   );
-  currentTime(response.data.dt * 1000);
+  currentTime(response.data.dt);
   getForcast(response.data.coord);
 }
 let temperature = null;
@@ -110,11 +107,12 @@ function forecastDetails(response) {
         forecastHtml +
         `
             <div class="col-2">
-              <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
-              
-                <img src=
+              <div class="forecast-date"><p><center>${formatDay(
+                forecastDay.dt
+              )}</center></p>
+              <img src=
     "http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"/>
-            
+            </div>
               <div class="forecast-temp">
                 <span class="forecast-max-temp"> <strong>${Math.round(
                   forecastDay.temp.max
